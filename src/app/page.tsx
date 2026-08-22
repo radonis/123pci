@@ -1,69 +1,23 @@
-import Image from "next/image";
 import styles from "./page.module.css";
 
+const services = [
+  ["01", "Wypełnienie SAQ", "Dobieramy właściwy typ ankiety samooceny i przechodzimy przez nią wspólnie."],
+  ["02", "Przygotowanie dokumentacji", "Tworzymy polityki, procedury i dowody wymagane przez standard."],
+  ["03", "Koordynacja skanów ASV", "Pomagamy zorganizować skan, zrozumieć wynik i usunąć wykryte luki."],
+  ["04", "Utrzymanie zgodności", "Pilnujemy terminów, odświeżamy dokumentację i wspieramy Cię w kolejnych latach."],
+];
+
+function Brand() { return <a className={styles.brand} href="#top"><span className={styles.mark}>✓</span><span><b>123</b>PCI</span></a>; }
+
 export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>
-            To get started, edit the{" "}
-            <code className={styles.code}>page.tsx</code> file.
-          </h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
-  );
+  return <main id="top">
+    <header className={styles.header}><nav className={styles.nav}><Brand /><div className={styles.links}><a href="#dla-kogo">Dla kogo</a><a href="#uslugi">Usługi</a><a href="#jak-to-dziala">Jak to działa</a></div><div className={styles.languages}><b>PL</b><a href="/en">EN</a><a href="/de">DE</a></div><a className={styles.navCta} href="#kontakt">Zarejestruj się</a></nav></header>
+    <section className={styles.hero}><div className={styles.heroGrid}><div><p className={styles.badge}>● Zgodność z PCI DSS v4.0</p><h1>Zgodność z PCI DSS - <em>prosto</em>, krok po kroku.</h1><p className={styles.lead}>Pomagamy małym merchantom oraz biurom turystycznym IATA bezpiecznie przetwarzać dane kart i spełnić wymogi PCI DSS - bez żargonu, bez chaosu, z jasnym planem działania.</p><div className={styles.actions}><a className={styles.primary} href="#kontakt">Rozpocznij bezpłatnie →</a><a className={styles.secondary} href="#uslugi">Zobacz usługi</a></div><div className={styles.chips}><span>SAQ A / A-EP / D</span><span>Skany ASV</span><span>Biura IATA</span><span>PL · EN · DE</span></div></div><aside className={styles.progress}><p className={styles.eyebrow}>TWOJA DROGA DO ZGODNOŚCI</p><h2>Przejrzysty status, krok po kroku</h2><p className={styles.done}>✓ Zakres i typ SAQ ustalone</p><p className={styles.done}>✓ Dokumentacja przygotowana</p><p className={styles.current}>◌ Skan ASV w toku <b>75%</b></p><p className={styles.pending}>○ Utrzymanie zgodności</p></aside></div></section>
+    <section className={styles.intro}><p className={styles.kicker}>CEL FIRMY</p><div className={styles.twoCol}><h2>Bezpieczeństwo płatności bez korporacyjnego bólu głowy.</h2><div><p>Standard PCI DSS bywa przytłaczający, szczególnie dla mniejszych firm bez własnego działu bezpieczeństwa. <b>Przekładamy wymagania na proste, wykonalne kroki.</b></p><p>Dobieramy właściwy typ ankiety, przygotowujemy dokumentację, organizujemy skany i przypominamy o kolejnych obowiązkach.</p></div></div></section>
+    <section id="dla-kogo" className={styles.audience}><p className={styles.kicker}>DLA KOGO</p><h2>Stworzone dla tych, którzy przyjmują płatności kartą.</h2><div className={styles.audienceCards}><article className={styles.iata}><span>WYRÓŻNIONE</span><h3>Biura turystyczne IATA</h3><p>Rozliczenia BSP i IATA oznaczają realne przetwarzanie danych kart. Pomagamy przejść przez PCI DSS bez zatrzymywania sprzedaży.</p><div>Rozliczenia BSP / IATA · GDS · Płatności online i stacjonarne</div></article><article className={styles.merchants}><h3>Mali merchanci</h3><p>Sklepy internetowe i stacjonarne, usługodawcy oraz subskrypcje.</p><ul><li>✓ E-commerce z bramką płatniczą</li><li>✓ Terminale i płatności stacjonarne</li><li>✓ Firmy bez własnego IT/security</li></ul></article></div></section>
+    <section id="uslugi" className={styles.services}><div className={styles.sectionHead}><div><p className={styles.kicker}>USŁUGI</p><h2>Wszystko, czego potrzebujesz do zgodności.</h2></div><a href="#kontakt">Porozmawiajmy o zakresie →</a></div><div className={styles.serviceGrid}>{services.map(([n,t,d]) => <article key={n}><span>{n}</span><h3>{t}</h3><p>{d}</p></article>)}</div></section>
+    <section id="jak-to-dziala" className={styles.steps}><p className={styles.kicker}>JAK TO DZIAŁA</p><h2>Cztery kroki. Resztę robimy my.</h2><p className={styles.sectionLead}>Kontaktujesz się z nami, a dalej prowadzimy Cię przez cały proces.</p><div className={styles.stepGrid}>{[["01","Kontakt"],["02","Rozmowa"],["03","Zakres"],["04","Dokumentacja"]].map(([n,t]) => <article key={n}><span>{n}</span><h3>{t}</h3><p>Jasny kolejny krok, bez zbędnych formalności.</p></article>)}</div><div className={styles.offer}><b>Pierwszy rok gratis dla nowych klientów SAQ-VT.</b><span>Opłaty zewnętrzne, w tym wymagane skany ASV, mogą być rozliczane odrębnie.</span></div></section>
+    <section id="kontakt" className={styles.contact}><div><p className={styles.kicker}>KONTAKT</p><h2>Zróbmy pierwszy krok razem.</h2><p className={styles.sectionLead}>Zostaw dane, a odezwiemy się z bezpłatną, wstępną oceną zakresu PCI DSS.</p><address><a href="mailto:rluczak@123pci.pl">rluczak@123pci.pl</a><a href="tel:+48500879090">500 87 90 90</a><span>ul. Browarowa 10a<br />43-100 Tychy</span></address></div><form className={styles.form} action="/api/contact" method="post"><h3>Wyślij zgłoszenie</h3><input name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" style={{position:"absolute",left:"-9999px"}} /><div className={styles.formRow}><label>Imię i nazwisko<input required name="name" /></label><label>Firma<input required name="company" /></label></div><div className={styles.formRow}><label>E-mail<input required name="email" type="email" /></label><label>Telefon<input name="phone" type="tel" /></label></div><label>Rodzaj działalności<select name="business"><option>Biuro turystyczne (IATA)</option><option>Sklep internetowy</option><option>Handel stacjonarny / terminal</option><option>Inna działalność</option></select></label><label>Wiadomość<textarea name="message" rows={3} /></label><label className={styles.check}><input required type="checkbox" />Zapoznałem/-am się z <a href="/polityka-prywatnosci">polityką prywatności</a> i zgadzam się na kontakt.</label><button type="submit">Wyślij zgłoszenie →</button><small>Odpowiadamy zwykle w ciągu jednego dnia roboczego.</small></form></section>
+    <footer className={styles.footer}><Brand /><p>Praktyczne wsparcie w uzyskaniu i utrzymaniu zgodności z PCI DSS.</p><div><a href="/polityka-prywatnosci">Polityka prywatności</a><a href="/cookies">Cookies</a></div><small>© 2026 123PCI. Wszelkie prawa zastrzeżone.</small></footer>
+  </main>;
 }
