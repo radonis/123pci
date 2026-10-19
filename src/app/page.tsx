@@ -1,4 +1,5 @@
 import styles from "./page.module.css";
+import LandingPage from "./landing-page";
 
 const services = [
   ["01", "Wypełnienie SAQ", "Dobieramy właściwy typ ankiety samooceny i przechodzimy przez nią wspólnie."],
@@ -11,7 +12,9 @@ function CardIcon() { return <svg viewBox="0 0 72 52" aria-hidden="true"><rect x
 function Brand() { return <a className={styles.brand} href="#top"><span className={styles.brandMark}><CardIcon /></span><span><b>123</b>PCI</span></a>; }
 function Flag({ language, href, active }: { language: "pl" | "en" | "de"; href: string; active?: boolean }) { const shapes = language === "pl" ? <><rect width="24" height="8" fill="#fff"/><rect y="8" width="24" height="8" fill="#DC143C"/></> : language === "en" ? <><rect width="24" height="16" fill="#012169"/><path d="M0 0 24 16M24 0 0 16" stroke="#fff" strokeWidth="3.2"/><path d="M0 0 24 16M24 0 0 16" stroke="#C8102E" strokeWidth="1.6"/><path d="M12 0V16M0 8H24" stroke="#fff" strokeWidth="5"/><path d="M12 0V16M0 8H24" stroke="#C8102E" strokeWidth="3"/></> : <><rect width="24" height="5.34" fill="#000"/><rect y="5.34" width="24" height="5.33" fill="#DD0000"/><rect y="10.67" width="24" height="5.33" fill="#FFCE00"/></>; return <a className={`${styles.flag} ${active ? styles.flagActive : ""}`} href={href} aria-label={language === "pl" ? "Polski" : language === "en" ? "English" : "Deutsch"}><svg viewBox="0 0 24 16" aria-hidden="true">{shapes}</svg></a>; }
 
-export default function Home() {
+export default function Home() { return <LandingPage locale="pl" />; }
+
+function LegacyPolishPage() {
   return <main id="top">
     <header className={styles.header}><nav className={styles.nav}><Brand /><div className={styles.links}><a href="#dla-kogo">Dla kogo</a><a href="#uslugi">Usługi</a><a href="#jak-to-dziala">Jak to działa</a></div><div className={styles.languages}><Flag language="pl" href="/" active /><Flag language="en" href="/en" /><Flag language="de" href="/de" /></div><a className={styles.navCta} href="#kontakt">Skontaktuj się</a></nav></header>
     <section className={styles.hero}><div className={styles.heroGrid}><div><p className={styles.badge}>● Zgodność z PCI DSS v4.0</p><h1>PCI DSS Compliance – <em>wspieramy</em> w procesie osiągnięcia zgodności.</h1><p className={styles.lead}>Pomagamy małym merchantom oraz biurom turystycznym IATA bezpiecznie przetwarzać dane kart i spełnić wymogi PCI DSS - bez żargonu, bez chaosu, z jasnym planem działania.</p><div className={styles.actions}><a className={styles.primary} href="#kontakt">Skontaktuj się →</a><a className={styles.secondary} href="#uslugi">Zobacz usługi</a></div><div className={styles.chips}><span>SAQ A / A-EP / D</span><span>Skany ASV</span><span>Biura IATA</span><span>PL · EN · DE</span></div></div><aside className={styles.progress}><div className={styles.progressHeading}><CardIcon /><div><p className={styles.eyebrow}>TWOJA DROGA DO ZGODNOŚCI</p><h2>Trzy proste etapy</h2></div></div><div className={styles.progressSteps}>{["Określenie zakresu", "Zebranie danych", "Przygotowanie dokumentacji"].map((step) => <p className={styles.progressStep} key={step}><span>✓</span>{step}</p>)}</div></aside></div></section>
